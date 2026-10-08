@@ -45,7 +45,6 @@ Featured illustrations created for key story moments:
 * 🍕 **Jafarzadeh:** Foodie, loyal friend, and the first to yell *"We're doomed!"* whenever chaos strikes.
 * 📚 **Sadegh:** Constantly stressed about his university thesis; the only somewhat sane person in the group who uses a blackboard eraser as a sword.
 * 🎮 **MirAbolghasemi:** Obsessed with the XBOX; willing to risk the entire universe as long as his favorite console stays safe!
-* 🛠️ **Dr. Drill-al-Din Surakhi:** Engineer, Doctor, Professor, and retired Colonel who enters rooms strictly by drilling through the ceiling.
 
 │       └── xbox_portal.jpg
 └── 🌐 index.html                # Gallery & Book Showcase Website
