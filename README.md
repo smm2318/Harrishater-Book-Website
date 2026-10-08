@@ -47,16 +47,5 @@ Featured illustrations created for key story moments:
 * 🎮 **MirAbolghasemi:** Obsessed with the XBOX; willing to risk the entire universe as long as his favorite console stays safe!
 * 🛠️ **Dr. Drill-al-Din Surakhi:** Engineer, Doctor, Professor, and retired Colonel who enters rooms strictly by drilling through the ceiling.
 
----
-
-## 🛠️ Project Structure
-
-```text
-Harrishater-Book-Website/
-├── 📄 README.md                 # Project Overview & Book Info
-├── 📁 chapters/                  # Written story chapters
-├── 📁 assets/
-│   └── 📁 images/               # Book illustrations & scene art
-│       ├── gaming_night.jpg
 │       └── xbox_portal.jpg
 └── 🌐 index.html                # Gallery & Book Showcase Website
