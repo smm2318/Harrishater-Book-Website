@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>گالری تصاویر و ویدیوها - داستان هری شاطر</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
+  <style>
+    :root {
+      --bg-color: #0f111a;
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --text-color: #f8f8f2;
+      --text-sub: #a0a0b0;
+      --primary: #ff79c6;
+      --accent: #8be9fd;
+      --border: rgba(255, 255, 255, 0.12);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    [data-theme="light"] {
+      --bg-color: #f4f5f9;
+      --card-bg: #ffffff;
+      --text-color: #212529;
+      --text-sub: #6c757d;
+      --primary: #d63384;
+      --accent: #0d6efd;
+      --border: rgba(0, 0, 0, 0.1);
+      --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Vazirmatn', sans-serif;
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+    }
+
+    body {
+      background: var(--bg-color);
+      color: var(--text-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 1000px;
+      margin-bottom: 20px;
+    }
+
+    .btn-back {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text-color);
+      padding: 8px 18px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .btn-back:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .controls-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-control {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text-color);
+      padding: 8px 16px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+
+    .btn-control:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .container {
+      max-width: 1000px;
+      width: 100%;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 35px;
+      box-shadow: var(--shadow);
+    }
+
+    .main-title {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+    }
+
+    .card img, .card video {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-title {
+      padding: 12px;
+      font-weight: bold;
+      text-align: center;
+      font-size: 0.95rem;
+      word-break: break-word;
+    }
+
+    .loading-text {
+      text-align: center;
+      font-size: 1.2rem;
+      color: var(--text-sub);
+      grid-column: 1 / -1;
+      padding: 40px 0;
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.88);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .lightbox img, .lightbox video {
+      max-width: 90%;
+      max-height: 80vh;
+      border-radius: 12px;
+    }
+
+    footer {
+      margin-top: 30px;
+      color: var(--text-sub);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body data-theme="dark">
+
+  <div class="top-bar">
+    <a href="index.html" class="btn-back" id="btnBack">🏠 بازگشت به صفحه اصلی</a>
+
+    <div class="controls-group">
+      <button class="btn-control" id="themeBtn">🌙 شب / ☀️ روز</button>
+      <button class="btn-control" id="langBtn">🌐 English</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1 class="main-title" id="galleryTitle">🎨 گالری تصاویر و ویدیوهای داستان هری شاطر</h1>
+
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="loading-text" id="loadingText">در حال دریافت فایل‌ها از پوشه images... ⏳</div>
+    </div>
+  </div>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <div id="lightboxContent"></div>
+  </div>
+
+  <footer id="footerText">
+    طراحی شده برای مینی وب‌سایت کتاب هری شاطر 🌟
+  </footer>
+
+  <script>
+    let currentLang = 'fa';
+    let currentTheme = 'dark';
+
+    const repoOwner = 'smm2318';
+    const repoName = 'Harrishater-Book-Website';
+
+    const translations = {
+      fa: {
+        galleryTitle: "🎨 گالری تصاویر و ویدیوهای داستان هری شاطر",
+        btnBack: "🏠 بازگشت به صفحه اصلی",
+        loadingText: "در حال دریافت فایل‌ها از پوشه images... ⏳",
+        noFiles: "هیچ عکس یا ویدیویی در پوشه images پیدا نشد!",
+        langBtn: "🌐 English",
+        footerText: "طراحی شده برای مینی وب‌سایت کتاب هری شاطر 🌟"
+      },
+      en: {
+        galleryTitle: "🎨 Harry Shater Story Media Gallery",
+        btnBack: "🏠 Back to Main Page",
+        loadingText: "Loading files from images folder... ⏳",
+        noFiles: "No images or videos found in images folder!",
+        langBtn: "🌐 فارسی",
+        footerText: "Designed for Harry Shater Book Mini-Website 🌟"
+      }
+    };
+
+    // دریافت اتوماتیک فایل‌ها از پوشه images گیت‌هاب
+    async function fetchImages() {
+      const grid = document.getElementById('galleryGrid');
+      const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/images`;
+
+      try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) throw new Error('فولدر پیدا نشد');
+        const files = await response.json();
+
+        grid.innerHTML = '';
+
+        const validExtensions = ['png', 'jpg', 'jpeg', 'gif', 'webp', 'mp4', 'webm'];
+        const mediaFiles = files.filter(file => {
+          const ext = file.name.split('.').pop().toLowerCase();
+          return validExtensions.includes(ext);
+        });
+
+        if (mediaFiles.length === 0) {
+          grid.innerHTML = `<div class="loading-text">${translations[currentLang].noFiles}</div>`;
+          return;
+        }
+
+        mediaFiles.forEach(file => {
+          const ext = file.name.split('.').pop().toLowerCase();
+          const card = document.createElement('div');
+          card.className = 'card';
+
+          const titleText = file.name.replace(/\.[^/.]+$/, "").replace(/_/g, " ");
+
+          if (['mp4', 'webm'].includes(ext)) {
+            card.innerHTML = `
+              <video src="${file.download_url}" muted loop onmouseover="this.play()" onmouseout="this.pause()"></video>
+              <div class="card-title">🎥 ${titleText}</div>
+            `;
+            card.onclick = () => openLightbox(file.download_url, 'video');
+          } else {
+            card.innerHTML = `
+              <img src="${file.download_url}" alt="${file.name}">
+              <div class="card-title">🖼️ ${titleText}</div>
+            `;
+            card.onclick = () => openLightbox(file.download_url, 'image');
+          }
+
+          grid.appendChild(card);
+        });
+
+      } catch (error) {
+        grid.innerHTML = `<div class="loading-text">خطا در بارگذاری فایل‌ها. مطمئن شوید پوشه images در گیت‌هاب وجود دارد.</div>`;
+      }
+    }
+
+    document.getElementById('themeBtn').addEventListener('click', function() {
+      currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.body.setAttribute('data-theme', currentTheme);
+    });
+
+    document.getElementById('langBtn').addEventListener('click', function() {
+      currentLang = currentLang === 'fa' ? 'en' : 'fa';
+      document.documentElement.dir = currentLang === 'fa' ? 'rtl' : 'ltr';
+      document.documentElement.lang = currentLang;
+
+      for (let key in translations[currentLang]) {
+        const el = document.getElementById(key);
+        if (el) el.innerText = translations[currentLang][key];
+      }
+    });
+
+    function openLightbox(url, type) {
+      const container = document.getElementById('lightboxContent');
+      if (type === 'video') {
+        container.innerHTML = `<video src="${url}" controls autoplay></video>`;
+      } else {
+        container.innerHTML = `<img src="${url}">`;
+      }
+      document.getElementById('lightbox').style.display = 'flex';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+      document.getElementById('lightboxContent').innerHTML = '';
+    }
+
+    fetchImages();
+  </script>
+</body>
+</html>
