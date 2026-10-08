@@ -4,8 +4,6 @@
 
 **An Iranian Sci-Fi Comedy & Multiverse Story**
 
-![Banner](https://raw.githubusercontent.com/smm2318/Harrishater-Book-Website/main/assets/images/gaming_night.png)
-
 [![GitHub Stars](https://img.shields.io/github/stars/smm2318/Harrishater-Book-Website?style=for-the-badge&logo=github)](https://github.com/smm2318/Harrishater-Book-Website/stargazers)
 [![License](https://img.shields.io/badge/License-CC%20BY--NC%204.0-blue.svg?style=for-the-badge)](https://creativecommons.org/licenses/by-nc/4.0/)
 [![Status](https://img.shields.io/badge/Status-Writing%20%26%20Illustrating-orange?style=for-the-badge)](https://github.com/smm2318/Harrishater-Book-Website)
@@ -32,7 +30,7 @@ Featured illustrations created for key story moments:
 
 | Scene 1: The Gaming Night & Cosmic Collision | Scene 2: Cosmic Orb Entering the XBOX |
 | :---: | :---: |
-| <img src="https://raw.githubusercontent.com/smm2318/Harrishater-Book-Website/main/assets/images/gaming_night.png" width="420" alt="Friends playing Forza Horizon"> | <img src="https://raw.githubusercontent.com/smm2318/Harrishater-Book-Website/main/assets/images/xbox_portal.png" width="420" alt="XBOX sparking with cosmic energy"> |
+| <img src="gaming_night.png" width="420" alt="Friends playing Forza Horizon"> | <img src="xbox_portal.png" width="420" alt="XBOX sparking with cosmic energy"> |
 | *Four friends playing Forza Horizon 5 right before the cosmic anomaly.* | *A powerful cosmic orb enters the XBOX through the HDMI port!* |
 
 </div>
@@ -45,6 +43,4 @@ Featured illustrations created for key story moments:
 * 🍕 **Jafarzadeh:** Foodie, loyal friend, and the first to yell *"We're doomed!"* whenever chaos strikes.
 * 📚 **Sadegh:** Constantly stressed about his university thesis; the only somewhat sane person in the group who uses a blackboard eraser as a sword.
 * 🎮 **MirAbolghasemi:** Obsessed with the XBOX; willing to risk the entire universe as long as his favorite console stays safe!
-
-│       └── xbox_portal.jpg
-└── 🌐 index.html                # Gallery & Book Showcase Website
+* 🛠️ **Dr. Drill-al-Din Surakhi:** Engineer, Doctor, Professor, and retired Colonel who enters rooms strictly by drilling through the ceiling.
